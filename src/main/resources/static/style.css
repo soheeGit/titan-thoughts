@@ -35,21 +35,47 @@ body {
 
 .character-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
     margin-bottom: 2rem;
+}
+
+/* 반응형 설정 - 화면이 작아지면 2줄로 나누기 */
+@media (max-width: 1200px) {
+    .character-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .character-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .character-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 }
 
 .character-card {
     background: linear-gradient(145deg, rgba(139, 69, 19, 0.8), rgba(160, 82, 45, 0.6));
     border: 2px solid #8b4513;
     border-radius: 15px;
-    padding: 1.5rem;
+    padding: 1.2rem;
     text-align: center;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .character-card:hover {
@@ -74,7 +100,7 @@ body {
 }
 
 .character-name {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #ffd700;
     margin-bottom: 0.5rem;
@@ -82,18 +108,19 @@ body {
 }
 
 .character-description {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: #f5f5dc;
     margin-bottom: 1rem;
-    line-height: 1.4;
+    line-height: 1.3;
+    flex-grow: 1;
 }
 
 .character-trait {
     background: rgba(255, 215, 0, 0.2);
     border: 1px solid #ffd700;
     border-radius: 20px;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
     color: #ffd700;
     font-weight: bold;
 }
