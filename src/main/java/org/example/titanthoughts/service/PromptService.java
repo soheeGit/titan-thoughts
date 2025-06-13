@@ -18,8 +18,9 @@ public class PromptService {
         return promptRepository.findById(id).orElseThrow();
     }
 
-    public Prompt savePrompt(String question, String answer) {
+    public Prompt savePrompt(String characterNames, String question, String answer) {
         Prompt prompt = new Prompt();
+        prompt.setCharacterNames(characterNames);
         prompt.setQuestion(question);
         prompt.setAnswer(answer);
         prompt.setCreatedAt(ZonedDateTime.now(ZoneOffset.UTC));
