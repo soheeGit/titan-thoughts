@@ -83,7 +83,7 @@
             </div>
 
             <div class="text-center">
-                <button type="submit" class="btn-transform" id="submitBtn" disabled>
+                <button type="submit" class="btn-transform" id="submitBtn">
                     🔄 사고 변환하기
                 </button>
             </div>
@@ -95,6 +95,10 @@
             <h6 style="color: #ffd700; margin-bottom: 1rem;">
                 변환 결과 ID: <span th:text="${promptData.id}">1</span>
             </h6>
+            <p class="mb-3">
+                <strong style="color: #ffd700;">캐릭터:</strong>
+                <span th:text="${promptData.characterNames}" style="color: #f5f5dc;"></span>
+            </p>
             <p class="mb-3">
                 <strong style="color: #ffd700;">원본:</strong>
                 <span th:text="${promptData.question}" style="color: #f5f5dc;"></span>

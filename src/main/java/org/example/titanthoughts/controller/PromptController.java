@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -42,13 +43,14 @@ public class PromptController {
 
         model.addAttribute("promptData", data);
         model.addAttribute("baseUrl", baseUrl);
+        model.addAttribute("character", character);
         return "index";
     }
 
-//    @GetMapping("/history/{id}")
-//    public String history(@PathVariable("id") String id, Model model) {
-//        model.addAttribute("promptData", promptService.getPromptById(id));
-//        model.addAttribute("baseUrl", baseUrl);
-//        return "history";
-//    }
+    @GetMapping("/history/{id}")
+    public String history(@PathVariable("id") String id, Model model) {
+        model.addAttribute("promptData", promptService.getPromptById(id));
+        model.addAttribute("baseUrl", baseUrl);
+        return "history";
+    }
 }

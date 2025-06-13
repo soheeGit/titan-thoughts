@@ -17,20 +17,21 @@ public class PromptAPIController {
     private final PromptService promptService;
     private final GeminiService geminiService;
 
-//    @PostMapping
-//    public ResponseEntity<Prompt> savePrompt(
-//            @RequestBody PromptForm promptForm
-//    ) {
-//        String result = geminiService.generate(promptForm.text());
-//        Prompt data = promptService.savePrompt(
-//                promptForm.text(),
-//                result
-//        );
-//        return ResponseEntity.status(HttpStatus.CREATED).body(data);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Prompt> getPrompt(@PathVariable("id") String id) {
-//        return ResponseEntity.ok(promptService.getPromptById(id));
-//    }
+    @PostMapping
+    public ResponseEntity<Prompt> savePrompt(
+            @RequestBody PromptForm promptForm
+    ) {
+        String result = geminiService.generate(promptForm.getCharacter(), promptForm.getText());
+        Prompt data = promptService.savePrompt(
+                promptForm.getCharacter(),
+                promptForm.getText(),
+                result
+        );
+        return ResponseEntity.status(HttpStatus.CREATED).body(data);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Prompt> getPrompt(@PathVariable("id") String id) {
+        return ResponseEntity.ok(promptService.getPromptById(id));
+    }
 }
